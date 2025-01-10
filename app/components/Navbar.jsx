@@ -16,6 +16,7 @@ export default function Navbar() {
           <h1>ahmed helpdesk</h1>
           <Link href="/">Dashboard</Link>
           <Link href="/tickets">Tickets</Link>
+          <Link href="/tickets/create">Create Tickets</Link>
     </nav>
   )
 }
