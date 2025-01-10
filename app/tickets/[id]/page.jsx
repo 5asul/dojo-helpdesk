@@ -2,17 +2,17 @@ import { notFound } from "next/navigation"
 
 export const dynamicParams = true // default val = true
 
-export async function generateStaticParams() {
-  const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+// export async function generateStaticParams() {
+//   const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
-  const res = await fetch(`${baseURL}/tickets`)
+//   const res = await fetch(`${baseURL}/tickets`)
 
-  const tickets = await res.json()
+//   const tickets = await res.json()
  
-  return tickets.map((ticket) => ({
-    id: ticket.id
-  }))
-}
+//   return tickets.map((ticket) => ({
+//     id: ticket.id
+//   }))
+// }
 
 async function getTicket(id) {
     // imitate delay
