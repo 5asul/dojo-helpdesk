@@ -1,10 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
 
+
+const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 async function getTickets(){
     // imitate delay
     await new Promise(resolve => setTimeout(resolve, 3000))
-    const res = await fetch('https://dojo-helpdesk-phi.vercel.app/tickets',{
+    const res = await fetch(`${baseURL}/tickets`,{
         next: {
             revalidate: 0
         }

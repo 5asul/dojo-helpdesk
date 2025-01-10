@@ -4,8 +4,10 @@ import { useRouter } from "next/navigation"
 import { useState } from "react"
 
 export default function CreateForm() {
-  const router = useRouter()
 
+  const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+
+  const router = useRouter()
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
   const [priority, setPriority] = useState('low')
@@ -17,7 +19,7 @@ export default function CreateForm() {
 
     const newTicket = { title, body, priority, user_email: 'mario@netninja.dev' }
 
-    const res = await fetch('https://dojo-helpdesk-phi.vercel.app/tickets', {
+    const res = await fetch(`${baseURL}/tickets`, {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(newTicket)
