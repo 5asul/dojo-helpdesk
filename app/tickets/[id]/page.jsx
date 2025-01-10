@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 export const dynamicParams = true // default val = true
 
 export async function generateStaticParams() {
-  const res = await fetch('http://localhost:4000/tickets')
+  const res = await fetch('https://dojo-helpdesk-phi.vercel.app/tickets')
 
   const tickets = await res.json()
  
