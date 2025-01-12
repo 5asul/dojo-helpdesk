@@ -2,7 +2,7 @@
 
 import AuthForm from "../AuthForm"
 
-export default function Signup() {
+export default function Login() {
 
   const handleSubmit = async (e, email, password) => {
     e.preventDefault()
@@ -12,7 +12,7 @@ export default function Signup() {
 
   return (
     <main>
-      <h2 className="text-center">Sign up</h2>
+      <h2 className="text-center">Login</h2>
 
       <AuthForm handleSubmit={handleSubmit} />
     </main>
