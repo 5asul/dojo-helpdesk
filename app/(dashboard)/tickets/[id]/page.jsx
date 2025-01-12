@@ -13,7 +13,7 @@ export const dynamicParams = true // default val = true
 //     id: ticket.id
 //   }))
 // }
-
+const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 async function getTicket(id) {
     // imitate delay
     await new Promise(resolve => setTimeout(resolve, 3000))

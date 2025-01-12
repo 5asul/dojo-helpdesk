@@ -1,7 +1,7 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
+// components
+import Navbar from '@/app/components/Navbar'
 
-export default function DashboardLayout({children}) {
+export default function DashboardLayout({ children }) {
   return (
     <>
       <Navbar />
