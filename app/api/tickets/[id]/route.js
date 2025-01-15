@@ -11,7 +11,5 @@ export async function DELETE(_, { params }) {
     .delete()
     .eq('id', id)
 
-  return NextResponse.json(ticket, {
-    status: 200
-  })
+    return NextResponse.json({ error })
 }

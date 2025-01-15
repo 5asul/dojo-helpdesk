@@ -13,7 +13,7 @@ export default function DeleteIcon({ id }) {
     setIsLoading(true)
     
     const res = await fetch(`http://localhost:3000/api/tickets/${id}`,{
-      method: "DELETE",
+      method: "DELETE"
     })
     const json = await res.json()
 
