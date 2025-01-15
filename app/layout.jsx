@@ -3,6 +3,7 @@ import { Rubik } from 'next/font/google'
 
 // components
 
+export const dynamic = 'force-dynamic'
 
 const rubik = Rubik({ subsets: ['latin'] })
 
