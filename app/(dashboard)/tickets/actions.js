@@ -14,7 +14,7 @@ export async function addTicket(formData) {
     const { data: { session } } = await supabase.auth.getSession()
   
     // insert the data
-    const { error } = await supabase.from('Ticketes')
+    const { error } = await supabase.from('Tickets')
       .insert({
         ...ticket,
         user_email: session.user.email,
@@ -27,3 +27,19 @@ export async function addTicket(formData) {
     revalidatePath('/tickets')
     redirect('/tickets')
 }
+
+
+export async function deleteTicket(id) {
+    const supabase = createServerActionClient({ cookies })
+  
+    const { error } = await supabase.from('Tickets')
+      .delete()
+      .eq('id', id)
+    
+    if (error) {
+      throw new Error('Could not delete the ticket.')
+    }
+  
+    revalidatePath('/tickets')
+    redirect('/tickets')
+  } 
