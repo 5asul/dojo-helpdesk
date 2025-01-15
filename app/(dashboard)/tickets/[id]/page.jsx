@@ -1,45 +1,38 @@
-import { notFound } from "next/navigation"
+import { notFound } from 'next/navigation'
+import { cookies } from 'next/headers'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 
 export const dynamicParams = true // default val = true
 
 export async function generateMetadata({ params }) {
-  const id = params.id
+  const supabase = createServerComponentClient({ cookies })
 
-  const res = await fetch(`http://localhost:4000/tickets/${id}`)
-  const ticket = await res.json()
+  const { data: ticket } = await supabase.from('Tickets')
+    .select()
+    .eq('id', params.id)
+    .single()
  
   return {
-    title: `Dojo Helpdesk | ${ticket.title}`
+    title: `Ahmed Helpdesk | ${ticket?.title || 'Ticket not Found'}`
   }
 }
 
-// export async function generateStaticParams() {
-//   const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
-//   const res = await fetch(`${baseURL}/tickets`)
 
-//   const tickets = await res.json()
- 
-//   return tickets.map((ticket) => ({
-//     id: ticket.id
-//   }))
-// }
-const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 async function getTicket(id) {
-    // imitate delay
-    await new Promise(resolve => setTimeout(resolve, 3000))
-    const res = await fetch(`${baseURL}/tickets/${id}`, {
-      next: {
-        revalidate: 60
-      }
-    })
+  const supabase = createServerComponentClient({ cookies })
 
-    if (!res.ok) {
-        notFound()
-      }
+  const { data } = await supabase.from('Tickets')
+    .select()
+    .eq('id', id)
+    .single()
+
+    if (!data) {
+      notFound()
+    }
   
-    return res.json()
-  }
+    return data
+}
 
 export default async function TicketDetails({ params }) {
   const { id } = await params
