@@ -11,11 +11,11 @@ export default function DeleteIcon({ id }) {
   const [isPending,startTransition] = useTransition()
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
-
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
   const handleClick = async () => {
     setIsLoading(true)
     
-    const res = await fetch(`http://localhost:3000/api/tickets/${id}`,{
+    const res = await fetch(`${baseUrl}/api/tickets/${id}`,{
       method: "DELETE"
     })
     const json = await res.json()
