@@ -13,7 +13,7 @@ export default function Navbar({ user }) {
         placeholder='blur'
         quality={100}
       />
-      <h1>Dojo Helpdesk</h1>
+      <h1>Ahmed Helpdesk</h1>
       <Link href="/">Dashboard</Link>
       <Link href="/tickets" className="mr-auto">Tickets</Link>
       {user && <span>Hello, {user.email}</span>}
